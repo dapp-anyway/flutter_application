@@ -1,16 +1,15 @@
-# chuck_norris_application
+# «Chukkky» Flutter Application
 
-An application with facts about Chuck Norris
+This application contains all the best jokes about Chuck Norris.
+Using it, you can either watch a random joke, or find it in a certain category.
+Also, if you can't remember any particular joke, then the application has a keyword search.
 
-## Getting Started
+## How to launch application
 
-This project is a starting point for a Flutter application.
+You can download latest `.apk` version for android in the `/apk` directory
 
-A few resources to get you started if this is your first Flutter project:
+## How to build application
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone this repository
+2. Run `flutter pub get` and `flutter build apk --release --no-sound-null-safety`
+3. You can download `.apk` in `build/outputs/flutter-apk` directory 
