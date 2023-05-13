@@ -18,14 +18,15 @@ class Search {
   List<Result> result;
 
   factory Search.fromJson(Map<String, dynamic> json) => Search(
-    total: json["total"],
-    result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
-  );
+        total: json["total"],
+        result:
+            List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "total": total,
-    "result": List<dynamic>.from(result.map((x) => x.toJson())),
-  };
+        "total": total,
+        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+      };
 }
 
 class Result {
@@ -48,22 +49,23 @@ class Result {
   String value;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-    categories: List<String>.from(json["categories"].map((x) => x)),
-    createdAt: DateTime.parse(json["created_at"]),
-    iconUrl: json["icon_url"],
-    id: json["id"],
-    updatedAt: DateTime.parse(json["updated_at"]),
-    url: json["url"],
-    value: json["value"],
-  );
+        categories: List<String>.from(json["categories"].map((x) => x)),
+        createdAt: DateTime.parse(json["created_at"]),
+        iconUrl: json["icon_url"],
+        id: json["id"],
+        updatedAt: DateTime.parse(json["updated_at"]),
+        url: json["url"],
+        value: json["value"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "categories": List<dynamic>.from(categories!.map((x) => x)),
-    "created_at": createdAt?.toIso8601String(),
-    "icon_url": iconUrl,
-    "id": id,
-    "updated_at": updatedAt?.toIso8601String(),
-    "url": url,
-    "value": value,
-  };
+        "categories": List<dynamic>.from(categories!.map((x) => x)),
+        "created_at": createdAt?.toIso8601String(),
+        // DateFormat('yyyy-MM-dd hh:mm:ss').format(createdAt!),
+        "icon_url": iconUrl,
+        "id": id,
+        "updated_at": updatedAt?.toIso8601String(),
+        "url": url,
+        "value": value,
+      };
 }

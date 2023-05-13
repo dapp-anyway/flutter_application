@@ -59,7 +59,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       onSubmitted: (String s) {
                         if (ModalRoute.of(context)?.settings.name !=
                             "/search_page") {
-
                           setState(() {
                             _controller = TextEditingController();
                             customIcon = const Icon(Icons.search);
@@ -84,7 +83,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                   settings: const RouteSettings(
                                       name: "/search_page")));
                         } else {
-
                           setState(() {
                             _controller = TextEditingController();
                             customIcon = const Icon(Icons.search);

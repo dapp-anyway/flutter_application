@@ -1,9 +1,9 @@
 import 'package:chuck_norris_application/services/colors.dart';
 import 'package:chuck_norris_application/views/joke_page.dart';
 import 'package:flutter/material.dart';
-
 import '../views/categories_page.dart';
 import '../views/home_page.dart';
+import 'package:http/http.dart' as http;
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -14,10 +14,11 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   int _currentIndex = 0;
+
   final List<Widget> _children = [
     const HomePage(),
-    const CategoriesPage(),
-    JokePage()
+    CategoriesPage(httpClient_: http.Client()),
+    JokePage(httpClient_: http.Client())
   ];
 
   void onTabTapped(int index) {
