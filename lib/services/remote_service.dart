@@ -5,15 +5,23 @@ import 'package:http/http.dart' as http;
 import '../models/search.dart';
 
 class RemoteService {
-  Future<Post?> getPost({String? category}) async {
-    var client = http.Client();
+  RemoteService({required this.httpClient});
 
-    var uri = category == null
+  http.Client httpClient;
+
+  void setHttpClient({required http.Client client}) {
+    httpClient = client;
+  }
+
+  Future<Post?> getPost({String? category}) async {
+    var url = category == null
         ? Uri.parse("https://api.chucknorris.io/jokes/random")
         : Uri.parse(
             "https://api.chucknorris.io/jokes/random?category=$category");
-    var response = await client.get(uri);
-    if(response.statusCode == 200) {
+
+    final response = await httpClient.get(url);
+
+    if (response.statusCode == 200) {
       var json = response.body;
       return postFromJson(json);
     }
@@ -21,11 +29,10 @@ class RemoteService {
   }
 
   Future<Search?> getSearch({required String search}) async {
-    var client = http.Client();
-
-    var uri = Uri.parse("https://api.chucknorris.io/jokes/search?query=$search");
-    var response = await client.get(uri);
-    if(response.statusCode == 200) {
+    var url =
+        Uri.parse("https://api.chucknorris.io/jokes/search?query=$search");
+    var response = await httpClient.get(url);
+    if (response.statusCode == 200) {
       var json = response.body;
       return searchFromJson(json);
     }
@@ -33,12 +40,9 @@ class RemoteService {
   }
 
   Future<List<String>?> getCategories() async {
-    var client = http.Client();
-
-    var uri = Uri.parse(
-        "https://api.chucknorris.io/jokes/categories");
-    var response = await client.get(uri);
-    if(response.statusCode == 200) {
+    var url = Uri.parse("https://api.chucknorris.io/jokes/categories");
+    var response = await httpClient.get(url);
+    if (response.statusCode == 200) {
       var json = response.body;
       return categoriesFromJson(json);
     }
