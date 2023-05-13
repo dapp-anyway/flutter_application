@@ -24,7 +24,7 @@ You can download latest `.apk` version for android in the `/apk` directory
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------:|
 | ![Concrete Category Page](https://github.com/dapp-anyway/flutter_application/blob/master/screenshots/03_categories_category.jpg?raw=true) | ![Random Joke Page](https://github.com/dapp-anyway/flutter_application/blob/master/screenshots/04_random.jpg?raw=true) |
 
-|                                                    Search Page                                                    |                                                                                    |
-|:-----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|
-| ![Search Page](https://github.com/dapp-anyway/flutter_application/blob/master/screenshots/05_search.jpg?raw=true) |                                                                                    |
+|                                                    Search Page                                                    |
+|:-----------------------------------------------------------------------------------------------------------------:|
+| ![Search Page](https://github.com/dapp-anyway/flutter_application/blob/master/screenshots/05_search.jpg?raw=true) |
 
