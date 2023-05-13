@@ -1,6 +1,5 @@
 import 'package:chuck_norris_application/models/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../services/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,17 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  _launchURL() async {
-    const url = "https://en.wikipedia.org/wiki/Chuck_Norris";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      print(123);
-      throw 'Could not launch $url';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,27 +41,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // const Padding(padding: EdgeInsets.only(top: 10)),
-            TextButton(
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                    const EdgeInsets.all(0)),
-              ),
-              onPressed: () {
-                _launchURL();
-              },
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Read full article",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: COLOR_PURPLE,
-                    height: 1.6,
-                  ),
-                ),
-              ),
-            ),
             const Padding(padding: EdgeInsets.only(top: 40)),
             const Text(
               "A little about application",

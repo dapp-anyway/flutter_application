@@ -2,10 +2,11 @@ import 'package:chuck_norris_application/models/custom_app_bar.dart';
 import 'package:chuck_norris_application/services/colors.dart';
 import 'package:chuck_norris_application/services/remote_service.dart';
 import 'package:flutter/material.dart';
-
 import '../models/search.dart';
 import '../services/string_extension.dart';
+import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class SearchPage extends StatefulWidget {
   SearchPage({Key? key, required this.title}) : super(key: key);
 
@@ -29,7 +30,8 @@ class _SearchPageState extends State<SearchPage> {
 
   getData({required String request}) async {
     _isLoaded = false;
-    _search = await RemoteService().getSearch(search: request);
+    _search = await RemoteService(httpClient: http.Client())
+        .getSearch(search: request);
 
     if (_search != null) {
       setState(() {
@@ -56,20 +58,21 @@ class _SearchPageState extends State<SearchPage> {
             physics: const BouncingScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                decoration: BoxDecoration(
-                  color: COLOR_BLACK_4,
-                  borderRadius: BorderRadius.circular(5.0)
-                ),
-                  padding: const EdgeInsets.only(left: 15, right: 15, top: 12, bottom: 15),
+                  margin: const EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                      color: COLOR_BLACK_4,
+                      borderRadius: BorderRadius.circular(5.0)),
+                  padding: const EdgeInsets.only(
+                      left: 15, right: 15, top: 12, bottom: 15),
                   child: Text(
-                      StringExtension.capitalize(_search?.result[index].value),
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: COLOR_BLACK,
-                        height: 1.6,
-                      ),));
+                    StringExtension.capitalize(_search?.result[index].value),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: COLOR_BLACK,
+                      height: 1.6,
+                    ),
+                  ));
             }),
       ),
     );

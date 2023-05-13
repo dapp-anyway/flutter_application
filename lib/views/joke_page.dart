@@ -3,12 +3,18 @@ import 'package:chuck_norris_application/services/remote_service.dart';
 import 'package:flutter/material.dart';
 import '../models/post.dart';
 import '../services/colors.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class JokePage extends StatefulWidget {
-  JokePage({Key? key, this.category, this.title = 'Random Joke'})
+  JokePage(
+      {Key? key,
+      required this.httpClient_,
+      this.category,
+      this.title = 'Random Joke'})
       : super(key: key);
 
+  http.Client httpClient_;
   String? category;
   String title;
 
@@ -35,9 +41,10 @@ class _JokePageState extends State<JokePage> {
   getData() async {
     _isLoaded = false;
     if (category == null) {
-      _post = await RemoteService().getPost();
+      _post = await RemoteService(httpClient: widget.httpClient_).getPost();
     } else {
-      _post = await RemoteService().getPost(category: category);
+      _post = await RemoteService(httpClient: widget.httpClient_)
+          .getPost(category: category);
     }
 
     if (_post != null) {
@@ -46,16 +53,6 @@ class _JokePageState extends State<JokePage> {
       });
     }
   }
-
-  _launchURL() async {
-    const url = "https://en.wikipedia.org/wiki/Chuck_Norris";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -86,34 +83,6 @@ class _JokePageState extends State<JokePage> {
                     ),
                   ),
                 ),
-                // Align(
-                //   alignment: FractionalOffset.bottomCenter,
-                //   child: SizedBox(
-                //     height: 56,
-                //     width: MediaQuery.of(context).size.width,
-                //     child: ElevatedButton(
-                //         onPressed: () {
-                //           getData();
-                //         },
-                //         style: ButtonStyle(
-                //             backgroundColor:
-                //                 MaterialStateProperty.all(COLOR_BLACK_4),
-                //             elevation: MaterialStateProperty.all(0),
-                //             foregroundColor:
-                //                 MaterialStateProperty.all(COLOR_BLACK),
-                //             shape: MaterialStateProperty.all<
-                //                     RoundedRectangleBorder>(
-                //                 RoundedRectangleBorder(
-                //                     borderRadius:
-                //                         BorderRadius.circular(10.0)))),
-                //         child: const Text(
-                //           "Open in browser",
-                //           style: TextStyle(
-                //               fontSize: 16, fontWeight: FontWeight.w500),
-                //         )),
-                //   ),
-                // ),
-                // const Padding(padding: EdgeInsets.only(top: 10)),
                 Align(
                   alignment: FractionalOffset.bottomCenter,
                   child: SizedBox(
