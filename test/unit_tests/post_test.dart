@@ -35,7 +35,7 @@ void main() {
     test("when parse json then update data", () {
       final post = Post.fromJson({
         "categories": [],
-        "created_at": "2020-01-05 13:42:21.179347",
+        "created_at": "2020-01-05 13:42:21.1",
         "icon_url": "url",
         "updated_at": "2020-01-05 13:42:21.179347",
         "url": "url",
