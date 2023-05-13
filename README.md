@@ -6,10 +6,10 @@ Also, if you can't remember any particular joke, then the application has a keyw
 
 ## How to launch application
 
-You can download latest `.apk` version for android in the `/apk` directory
+You can download latest `.apk` version for android in the `/apk` directory 
 
 ## How to build application
 
 1. Clone this repository
-2. Run `flutter pub get` and `flutter build apk --release --no-sound-null-safety`
+2. Run `flutter pub get` and `flutter build apk --release`
 3. You can download `.apk` in `build/outputs/flutter-apk` directory 
