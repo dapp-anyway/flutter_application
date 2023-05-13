@@ -30,6 +30,7 @@ void main() {
       expect(iconUrl, "url");
       final url = post.url;
       expect(url, "url");
+
     });
 
     test("when parse json then update data", () {
